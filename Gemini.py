@@ -5,11 +5,6 @@ from dotenv import load_dotenv
 from PIL import Image
 import os
 import io
-#import pandas as pd
-#import base64
-#from pandasai import SmartDatalake
-#from pandasai.responses.streamlit_response import StreamlitResponse
-from pandasai.llm import AzureOpenAI
 
 # Carga variables de entorno
 load_dotenv()
@@ -24,20 +19,6 @@ def image_to_byte_array(image: Image) -> bytes:
 # Configuración de la API de Google
 API_KEY = os.environ.get("GOOGLE_API_KEY")
 genai.configure(api_key=API_KEY)
-
-# Configuración de Azure OpenAI
-OPENAI_API_BASE = "https://openaibcu.openai.azure.com/"
-OPENAI_API_KEY = 'c6164d86a6c248b79903a901c184f547'  # Reemplaza con tu clave API real
-
-deployment_name = "bcu-gpt-4"
-
-llm = AzureOpenAI(
-    deployment_name=deployment_name,
-    api_version="2023-05-15",
-    api_base=OPENAI_API_BASE,
-    api_token=OPENAI_API_KEY,
-    is_chat_model=True,
-)
 
 # Configuración de la barra lateral
 def setup_sidebar():
